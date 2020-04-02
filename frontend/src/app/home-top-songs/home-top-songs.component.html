@@ -1,0 +1,65 @@
+<table mdbTable bordered="true">
+    <thead class="black white-text">
+      <tr>
+        <th *ngFor="let head of topSongHeadElements" scope="col">{{head}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr mdbTableCol >
+        <td class="text-center">
+            <img src="assets/artist/1.jpg" style="width:100px;height:100px;" alt="">
+        </td>
+        <td>Someone You Loved</td>
+        <td>July 21, 2019</td>
+        <td>Lewis Capadli</td>
+        <td>
+          <ng-container *ngFor="let star of stars">
+            <app-star-rating (starClicked)="onStarClick($event)" [starId]="star" [rating]="rating">
+            </app-star-rating>
+          </ng-container>
+        </td>
+      </tr>
+      <tr mdbTableCol >
+        <td class="text-center">
+            <img src="assets/artist/2.jpg" style="width:100px;height:100px;" alt="">
+        </td>
+        <td>Someone You Loved</td>
+        <td>July 21, 2019</td>
+        <td>Lewis Capadli</td>
+        <td>
+          <ng-container *ngFor="let star of stars">
+            <app-star-rating (starClicked)="onStarClick($event)" [starId]="star" [rating]="rating">
+            </app-star-rating>
+          </ng-container>
+        </td>
+      </tr>
+      <tr mdbTableCol >
+        <td class="text-center">
+            <img src="assets/artist/3.jpg" style="width:100px;height:100px;" alt="">
+        </td>
+        <td>Someone You Loved</td>
+        <td>July 21, 2019</td>
+        <td>Lewis Capadli</td>
+        <td>
+          <ng-container *ngFor="let star of stars">
+            <app-star-rating (starClicked)="onStarClick($event)" [starId]="star" [rating]="rating">
+            </app-star-rating>
+          </ng-container>
+        </td>
+      </tr>
+      <tr mdbTableCol >
+        <td class="text-center">
+            <img src="assets/artist/4.jpg" style="width:100px;height:100px;" alt="">
+        </td>
+        <td>Someone You Loved</td>
+        <td>July 21, 2019</td>
+        <td>Lewis Capadli</td>
+        <td>
+          <ng-container *ngFor="let star of stars">
+            <app-star-rating (starClicked)="onStarClick($event)" [starId]="star" [rating]="rating">
+            </app-star-rating>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+</table>

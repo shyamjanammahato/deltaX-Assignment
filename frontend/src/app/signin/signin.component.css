@@ -1,0 +1,17 @@
+mat-card {
+  border-radius: 8px;
+  justify-content:center;align-items:center;
+}
+mat-form-field {
+  width: 80%;
+  display: block;
+  margin: auto;
+}
+.login-button {
+  margin-top: 20px;
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+}
+  
+  

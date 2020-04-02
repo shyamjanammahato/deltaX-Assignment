@@ -1,0 +1,59 @@
+<main>
+  <div class="container">
+    <div class="row mt-5 pt-5">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">Add New Song<hr>
+        <form>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="songName">Song Name</label>
+                <input class="form-control" placeholder="Song Name" name="songName">
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="dateReleased">Date Released</label>
+                <div class="input-group">
+                  <input class="form-control" placeholder="Select Released Date" [matDatepicker]="picker">
+                  <div class="input-group-append">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="artwork">Artwork</label>
+                <input type="file" class="form-control">
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="form-group">
+                <label for="artwork">Artwork</label>
+                <app-multiselect-dropdown></app-multiselect-dropdown> 
+              </div> 
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label for="artwork">&nbsp;</label>
+                <button type="button" class="btn btn-sm btn-primary" (click)="openModalWithComponent()"><i class="fa fa-plus"></i> Add Artist</button>
+              </div>
+            </div>
+            <div class="col-lg-2">
+              <div class="form-group">
+                <button class="btn btn-info">Cancel</button>
+              </div>
+            </div>
+            <div class="col-lg-2 ml-5">
+              <div class="form-group">
+                <button class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
