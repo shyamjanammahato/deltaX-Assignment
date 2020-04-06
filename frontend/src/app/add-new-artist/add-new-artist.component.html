@@ -5,34 +5,46 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="form-group">
-        <label for="dateReleased">Artist Name</label>
-        <input type="text" class="form-control" placeholder="Artist Name">
+  <form [formGroup]="addArtistForm">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label for="dateReleased">Artist Name <small class="text-danger">*</small></label>
+          <input type="hidden" class="form-control" formControlName="userId" name="userId" value="">
+          <input formControlName="artistName" type="text" class="form-control" placeholder="Artist Name" name="artistName">
+          <div class="alert alert-danger" role="alert" *ngIf="addArtistForm.get('artistName').invalid && addArtistForm.get('artistName').touched">
+            Artist Name is required
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-lg-12">
-      <label for="dateOfBirth">Date of Birth</label>
-      <div class="form-group">
-        <div class="input-group">
-          <input class="form-control" placeholder="Select Date of Birth" [matDatepicker]="dateOfBirth">
-          <div class="input-group-append">
-            <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
-            <mat-datepicker #dateOfBirth></mat-datepicker>
+      <div class="col-lg-12">
+        <label for="dateOfBirth">Date of Birth <small class="text-danger">*</small></label>
+        <div class="form-group">
+          <div class="input-group">
+            <input formControlName="dateOfBirth" class="form-control" placeholder="Select Date of Birth" [matDatepicker]="dateOfBirth" name="dateOfBirth">
+            <div class="input-group-append">
+              <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+              <mat-datepicker #dateOfBirth></mat-datepicker>
+            </div>
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="addArtistForm.get('dateOfBirth').invalid && addArtistForm.get('dateOfBirth').touched">
+            Date of Birth is required
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label for="bio">Bio <small class="text-danger">*</small></label>
+          <textarea formControlName="bio" class="form-control" placeholder="Bio" rows="4" name="bio"></textarea>
+          <div class="alert alert-danger" role="alert" *ngIf="addArtistForm.get('bio').invalid && addArtistForm.get('bio').touched">
+            Bio is required
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-12">
-      <div class="form-group">
-        <label for="bio">Bio</label>
-        <textarea class="form-control" placeholder="Bio" rows="4"></textarea>
-      </div>
-    </div>
-  </div>
+  </form>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Close</button>
-  <button class="btn btn-primary">Done</button>
+  <button class="btn btn-primary" (click)="addArtist()">Done</button>
 </div>

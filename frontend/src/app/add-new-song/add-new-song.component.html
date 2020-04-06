@@ -3,36 +3,56 @@
     <div class="row mt-5 pt-5">
       <div class="col-lg-4"></div>
       <div class="col-lg-4">Add New Song<hr>
-        <form>
+        <form [formGroup]="addNewSongForm">
           <div class="row">
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="songName">Song Name</label>
-                <input class="form-control" placeholder="Song Name" name="songName">
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="form-group">
-                <label for="dateReleased">Date Released</label>
-                <div class="input-group">
-                  <input class="form-control" placeholder="Select Released Date" [matDatepicker]="picker">
-                  <div class="input-group-append">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </div>
+                <label for="songName">Song Name <small class="text-danger">*</small> </label>
+                <input type="hidden" class="form-control" formControlName="userId" name="userId" value="">
+                <input class="form-control" placeholder="Song Name" name="songName" formControlName="songName">
+                <div class="alert alert-danger" role="alert" *ngIf="addNewSongForm.get('songName').invalid && addNewSongForm.get('songName').touched">
+                  Song Name is required
                 </div>
               </div>
             </div>
             <div class="col-lg-12">
               <div class="form-group">
-                <label for="artwork">Artwork</label>
-                <input type="file" class="form-control">
+                <label for="dateReleased">Date Released <small class="text-danger">*</small></label>
+                <div class="input-group">
+                  <input class="form-control" formControlName="dateReleased" placeholder="Select Released Date" [matDatepicker]="dateReleased">
+                  <div class="input-group-append">
+                    <mat-datepicker-toggle matSuffix [for]="dateReleased"></mat-datepicker-toggle>
+                    <mat-datepicker #dateReleased></mat-datepicker>
+                  </div>
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="addNewSongForm.get('dateReleased').invalid && addNewSongForm.get('dateReleased').touched">
+                  Released Date is required
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="form-group">
+                <label for="artwork">Artwork <small class="text-danger">*</small></label>
+                <input type="file" ng2FileSelect [uploader]="uploader" formControlName="artwork" class="form-control">
+                <div class="alert alert-danger" role="alert" *ngIf="addNewSongForm.get('artwork').invalid && addNewSongForm.get('artwork').touched">
+                  Artwork is required
+                </div>
               </div>
             </div>
             <div class="col-lg-8">
               <div class="form-group">
-                <label for="artwork">Artwork</label>
-                <app-multiselect-dropdown></app-multiselect-dropdown> 
+                <label for="artwork">Artists <small class="text-danger">*</small></label>
+                <ng-multiselect-dropdown [data]="artistService.artists"
+                  formControlName="artists"
+                  [settings]="dropdownSettings" 
+                  (onSelect)="onItemSelect($event)" 
+                  (onDeSelect)="onItemDeSelect($event)"
+                  (onSelectAll)="onSelectAll($event)"
+                  (onDeSelectAll)="onDeSelectAll($event)">
+                </ng-multiselect-dropdown>
+                <div class="alert alert-danger" role="alert" *ngIf="addNewSongForm.get('artists').invalid && addNewSongForm.get('artists').touched">
+                  Artists is required
+                </div>
               </div> 
             </div>
             <div class="col-lg-4">
@@ -48,7 +68,7 @@
             </div>
             <div class="col-lg-2 ml-5">
               <div class="form-group">
-                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-primary" type="button" (click)="submitNewSong()">Submit</button>
               </div>
             </div>
           </div>

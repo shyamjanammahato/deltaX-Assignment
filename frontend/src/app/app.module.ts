@@ -1,8 +1,10 @@
+import { UserService } from './user.service';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -62,12 +64,13 @@ import { AddNewArtistComponent } from './add-new-artist/add-new-artist.component
     ButtonsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSnackBarModule,
     MDBBootstrapModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     ModalModule.forRoot()
   ],
   schemas:[NO_ERRORS_SCHEMA],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

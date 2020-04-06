@@ -1,7 +1,12 @@
-<ng-multiselect-dropdown [data]="asv" [(ngModel)]="selectedItems" 
+<ng-multiselect-dropdown [data]="artistService.artists"
     [settings]="dropdownSettings" 
     (onSelect)="onItemSelect($event)" 
     (onDeSelect)="onItemDeSelect($event)"
     (onSelectAll)="onSelectAll($event)"
     (onDeSelectAll)="onDeSelectAll($event)" disabled>
 </ng-multiselect-dropdown>
+
+
+<!-- <select multiple class="form-control" name="" id="">
+    <option value="{{ar._id}}" *ngFor="let ar of artistService.artists">{{ar.name}}</option>
+</select> -->

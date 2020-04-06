@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -15,26 +16,31 @@ export class SigninComponent implements OnInit {
     password: new FormControl(
       null,[Validators.required])
   });
-  constructor(private _router: Router, private _user: UserService) { 
+  constructor(private _snackBar: MatSnackBar, private _router: Router, private _user: UserService) { 
     this._user.user()
     .subscribe(
-      error=> this._router.navigate(['/signin'])
+      data=>this._router.navigate(['/homepage'])
     )
   }
 
   ngOnInit(): void {
   }
-
+  
   login() {
     if(!this.loginForm.valid){
-      console.log('Invalid Form'); return;
+      this._snackBar.open("Invalid Credentials", "Retry", {
+        duration: 2000,
+      });
     }
     // console.log(JSON.stringify(this.loginForm.value));
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
-      data=> {this._router.navigate(['/homepage']);},
-      // error=> console.log(error)
+      data=> {
+        this._snackBar.open("Login Successful.", "", {duration: 2000,});
+        this._router.navigate(['/homepage']);
+      },
+      error=> {this._snackBar.open("Invalid Credentials.", "Retry", {duration: 2000,});}
     )
-  }
 
+  }
 }

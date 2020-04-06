@@ -3,8 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angula
 import { passwordMatchValidator } from '../validator';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
-
-declare var M: any;
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -24,10 +23,10 @@ export class SignupComponent implements OnInit {
       ]),
     cpass: new FormControl(null, [Validators.required, passwordMatchValidator])
   });
-  constructor(private _router: Router, private _userService: UserService) { 
+  constructor(private _snackBar: MatSnackBar, private _router: Router, private _userService: UserService) { 
     this._userService.user()
     .subscribe(
-      error=> this._router.navigate(['/signup'])
+      data=>this._router.navigate(['/homepage'])
     )
   }
 
@@ -36,13 +35,18 @@ export class SignupComponent implements OnInit {
 
   register() {
     if(!this.registerForm.valid){
-      console.log('Invalid Forms'); return;
+      this._snackBar.open("Please fill all the fields.", "Retry", {
+        duration: 2000,
+      });
     }
 
     this._userService.register(JSON.stringify(this.registerForm.value))
     .subscribe(
-      data=> { this._router.navigate(['/signin']);},
-      // error=> console.log(error)
+      data=> { 
+        this._snackBar.open("Signup Successful. Login to Continue.", "", {duration: 2000,});
+        this._router.navigate(['/signin']);
+      },
+      error=> {this._snackBar.open("Error Occurred.", "Retry", {duration: 2000,});}
     )
     // console.log(JSON.stringify(this.registerForm.value));
   }

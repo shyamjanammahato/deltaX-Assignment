@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   constructor(private _http: HttpClient) { }
-
+  
   register(body: any){
     return this._http.post('http://127.0.0.1:3000/users/signup',body,{
       observe: 'body',
@@ -27,7 +27,7 @@ export class UserService {
     return this._http.get('http://127.0.0.1:3000/users/homepage',{
       observe: 'body',
       withCredentials: true,
-      headers: new HttpHeaders().append('Content-type','application/json') 
+      headers: new HttpHeaders().append('Content-type','application/json')
     });
   }
   // for logout
@@ -35,6 +35,22 @@ export class UserService {
     return this._http.get('http://127.0.0.1:3000/users/logout',{
       observe: 'body',
       withCredentials: true,
+      headers: new HttpHeaders().append('Content-type','application/json') 
+    });
+  }
+
+  //add new artist
+  addNewArtist(body: any) {
+    return this._http.post('http://127.0.0.1:3000/users/add-new-artist',body,{
+      observe: 'body',
+      headers: new HttpHeaders().append('Content-type','application/json') 
+    });
+  }
+
+  //add new song
+  addNewSong(body: any) {
+    return this._http.post('http://127.0.0.1:3000/users/add-song',body,{
+      observe: 'body',
       headers: new HttpHeaders().append('Content-type','application/json') 
     });
   }
