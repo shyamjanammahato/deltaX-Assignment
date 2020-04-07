@@ -15,15 +15,15 @@ Go to expressapp folder and install package by typing "npm install --save ng2-fi
 
 Go to expressapp folder and install package by typing "npm i express mongoose body-parser --save" into the terminal
 
-Go to expressapp folder and start the server using "npm install --save @ng-bootstrap/ng-bootstrap" command into the terminal
-
-Go to expressapp folder and start the server using "npm install multiselect-dropdown" command into the terminal
-
-Go to expressapp folder and start the server using "npm i angular2-multiselect-dropdown" command into the terminal
-
-Go to expressapp folder and start the server using "npm install @fortawesome/fontawesome-free" command into the terminal
-
 Go to expressapp folder and start the server using "npm start" command into the terminal
+
+Go to frontend folder and start the server using "npm install --save @ng-bootstrap/ng-bootstrap" command into the terminal
+
+Go to frontend folder and start the server using "npm install multiselect-dropdown" command into the terminal
+
+Go to frontend folder and start the server using "npm i angular2-multiselect-dropdown" command into the terminal
+
+Go to frontend folder and start the server using "npm install @fortawesome/fontawesome-free" command into the terminal
 
 Go to frontend folder and start the frontend angular application using "ng server" command into the terminal
 
